@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import CarDiagram from './CarDiagram';
 
 interface CarPartDetailsProps {
   isOpen: boolean;
@@ -27,7 +27,7 @@ const CarPartDetails = ({ isOpen, onClose, part }: CarPartDetailsProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl">{part.name}</DialogTitle>
           <div className="flex gap-2">
@@ -37,6 +37,12 @@ const CarPartDetails = ({ isOpen, onClose, part }: CarPartDetailsProps) => {
         </DialogHeader>
         
         <div className="space-y-6">
+          {/* Car Diagram Section */}
+          <div>
+            <h3 className="font-semibold mb-3">Sensor Location Diagram</h3>
+            <CarDiagram partName={part.name} location={part.location} />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <h3 className="font-semibold mb-2">Part Image</h3>
